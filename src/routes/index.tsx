@@ -67,8 +67,8 @@ function Home() {
             <span className="text-sm font-black sm:text-base">からでも</span>
           </div>
 
-          <div className="mt-8 pb-16 animate-nb-rise [animation-delay:0.3s] sm:max-w-[58%]">
-            <h1 className="text-5xl font-black leading-[1.35] tracking-tight text-[#e5398a] drop-shadow-[0_2px_0_rgba(255,255,255,0.9)] sm:text-7xl">
+          <div className="mt-8 pb-16 animate-nb-rise [animation-delay:0.3s] sm:max-w-[68%]">
+            <h1 className="whitespace-nowrap text-4xl font-black leading-[1.35] tracking-tight text-[#e5398a] drop-shadow-[0_2px_0_rgba(255,255,255,0.9)] sm:text-6xl">
               <span className="bg-gradient-to-t from-[#ffd94d] from-40% to-transparent to-40% px-1">
                 長く継続
               </span>
