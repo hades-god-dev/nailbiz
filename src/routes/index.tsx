@@ -42,19 +42,24 @@ function Home() {
         <img
           src={logoAsset.url}
           alt="NailBiz"
-          className="absolute right-4 top-4 z-20 w-20 sm:right-8 sm:top-6 sm:w-28"
+          className="absolute right-4 top-4 z-20 w-20 animate-nb-rise sm:right-8 sm:top-6 sm:w-28"
         />
 
-        <div className="relative mx-auto min-h-[560px] max-w-5xl px-5 pt-14 sm:px-8 sm:pt-16">
-          <p className="text-center text-sm font-black tracking-wide sm:text-lg">
+        {/* floating sparkles */}
+        <span aria-hidden className="absolute left-[12%] top-16 animate-nb-sparkle text-xl text-white/90">✦</span>
+        <span aria-hidden className="absolute right-[30%] top-24 animate-nb-sparkle text-2xl text-white/80 [animation-delay:0.6s]">✦</span>
+        <span aria-hidden className="absolute bottom-[45%] left-[6%] animate-nb-sparkle text-lg text-white/70 [animation-delay:1.2s]">✦</span>
+
+        <div className="relative mx-auto min-h-[560px] max-w-5xl px-5 pt-14 sm:min-h-[480px] sm:px-8 sm:pt-16">
+          <p className="animate-nb-rise text-sm font-black tracking-wide underline decoration-dotted decoration-2 underline-offset-4 sm:text-lg">
             頑張っているのに利益が残らないネイリスト必見！
           </p>
 
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <div className="mt-4 flex flex-wrap items-center gap-2 animate-nb-rise [animation-delay:0.15s] sm:gap-3">
             {["人脈なし", "コネなし", "資金なし"].map((t) => (
               <span
                 key={t}
-                className="rounded-md border-2 border-[#3d2333] bg-white px-3 py-1 text-sm font-black sm:px-4 sm:text-base"
+                className="rounded-md border-2 border-[#e5398a] bg-white px-3 py-1 text-sm font-black text-[#e5398a] sm:px-4 sm:text-base"
               >
                 ✓{t}
               </span>
@@ -62,37 +67,44 @@ function Home() {
             <span className="text-sm font-black sm:text-base">からでも</span>
           </div>
 
-          <div className="mt-6 pb-16 sm:max-w-[60%]">
-            <div className="text-center sm:text-left">
-              <h1 className="text-4xl font-black leading-[1.3] tracking-tight text-[#e5398a] drop-shadow-[0_2px_0_rgba(255,255,255,0.9)] sm:text-6xl">
-                長く継続できる
-                <br />
+          <div className="mt-8 pb-16 animate-nb-rise [animation-delay:0.3s] sm:max-w-[58%]">
+            <h1 className="text-5xl font-black leading-[1.35] tracking-tight text-[#e5398a] drop-shadow-[0_2px_0_rgba(255,255,255,0.9)] sm:text-7xl">
+              <span className="bg-gradient-to-t from-[#ffd94d] from-40% to-transparent to-40% px-1">
+                長く継続
+              </span>
+              できる
+              <br />
+              <span className="underline decoration-[#4aa8e0] decoration-4 underline-offset-8">
                 ネイルサロン経営へ
-              </h1>
-            </div>
+              </span>
+            </h1>
           </div>
         </div>
 
         {/* Cloud band */}
-        <div className="relative bg-[#1a1a1a] px-4 pb-10 pt-12">
+        <div className="relative bg-white px-4 pb-8 pt-10">
           <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-6 gap-y-8">
-            {["安売り", "長時間施術", "薄利多売"].map((t) => (
-              <div key={t} className="relative">
+            {["安売り", "長時間施術", "薄利多売"].map((t, i) => (
+              <div
+                key={t}
+                className="relative animate-nb-float"
+                style={{ animationDelay: `${i * 0.5}s` }}
+              >
                 {/* cloud built from overlapping circles */}
                 <div className="relative flex h-24 w-48 items-center justify-center sm:h-28 sm:w-56">
-                  <span className="absolute left-2 top-6 h-16 w-16 rounded-full bg-[#5a5a5a] sm:h-20 sm:w-20" />
-                  <span className="absolute left-10 top-1 h-20 w-20 rounded-full bg-[#5a5a5a] sm:left-12 sm:h-24 sm:w-24" />
-                  <span className="absolute right-8 top-3 h-16 w-16 rounded-full bg-[#5a5a5a] sm:h-20 sm:w-20" />
-                  <span className="absolute bottom-1 left-6 h-14 w-14 rounded-full bg-[#5a5a5a] sm:h-16 sm:w-16" />
-                  <span className="absolute bottom-2 right-3 h-14 w-14 rounded-full bg-[#5a5a5a] sm:h-16 sm:w-16" />
-                  <span className="relative z-10 text-lg font-black text-white sm:text-2xl">
+                  <span className="absolute left-2 top-6 h-16 w-16 rounded-full bg-[#d9d9d9] sm:h-20 sm:w-20" />
+                  <span className="absolute left-10 top-1 h-20 w-20 rounded-full bg-[#d9d9d9] sm:left-12 sm:h-24 sm:w-24" />
+                  <span className="absolute right-8 top-3 h-16 w-16 rounded-full bg-[#d9d9d9] sm:h-20 sm:w-20" />
+                  <span className="absolute bottom-1 left-6 h-14 w-14 rounded-full bg-[#d9d9d9] sm:h-16 sm:w-16" />
+                  <span className="absolute bottom-2 right-3 h-14 w-14 rounded-full bg-[#d9d9d9] sm:h-16 sm:w-16" />
+                  <span className="relative z-10 text-lg font-black text-[#3d2333] sm:text-2xl">
                     {t}
                   </span>
                 </div>
                 {/* swirl mark */}
                 <svg
                   viewBox="0 0 40 32"
-                  className="absolute -right-4 -top-3 h-7 w-9 text-white"
+                  className="absolute -right-4 -top-3 h-7 w-9 text-[#3d2333]"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="3"
@@ -102,16 +114,16 @@ function Home() {
                 </svg>
               </div>
             ))}
-            <p className="flex items-center gap-2 text-white">
-              <span className="text-lg font-black sm:text-2xl">から</span>
+            <p className="flex items-center gap-2">
+              <span className="text-lg font-black text-[#3d2333] sm:text-2xl">から</span>
               <span className="text-3xl font-black text-[#e5398a] sm:text-5xl">卒業</span>
-              <span className="text-2xl text-[#ffd94d] sm:text-3xl">✦</span>
+              <span className="animate-nb-sparkle text-2xl text-[#ffd94d] sm:text-3xl">✦</span>
             </p>
           </div>
           {/* chevron */}
-          <div className="mt-6 flex flex-col items-center leading-none">
-            <span className="text-3xl font-black text-[#e5398a]">⌄</span>
-            <span className="-mt-4 text-3xl font-black text-[#e5398a]">⌄</span>
+          <div className="mt-4 flex flex-col items-center leading-none">
+            <span className="animate-nb-chevron text-3xl font-black text-[#e5398a]">⌄</span>
+            <span className="-mt-4 animate-nb-chevron text-3xl font-black text-[#e5398a] [animation-delay:0.2s]">⌄</span>
           </div>
         </div>
 
