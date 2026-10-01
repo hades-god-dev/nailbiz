@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import mangaAsset from "@/assets/manga1.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
-import characterAsset from "@/assets/character.png.asset.json";
+import heroAsset from "@/assets/hero.png.asset.json";
+import { episodes } from "@/lib/episodes";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,17 +27,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const episodes = [
-  { no: "第1話", title: "なぜネイリストを選んだのか", ready: true },
-  { no: "第2話", title: "赤字そこからの苦しみ", ready: true },
-  { no: "第3話", title: "発想の転換（経費削減）", ready: false },
-  { no: "第4話", title: "時短×高単価の確立", ready: false },
-  { no: "第5話", title: "スタッフ雇用の壁", ready: false },
-  { no: "第6話", title: "満席ネイルサロンへ", ready: false },
-  { no: "第7話", title: "今も学び続ける", ready: false },
-  { no: "第8話", title: "経営スクールでの学び そしてこれから", ready: false },
-];
-
 const pains = ["単価が上がらない", "時間がない", "頑張っているのに利益が残らない"];
 
 const results = ["無借金経営", "ネイル単価1万円", "経営8年", "ネイリスト歴14年"];
@@ -45,15 +35,17 @@ function Home() {
   return (
     <main className="min-h-screen bg-[#fff5fa] font-['Noto_Sans_JP',system-ui,'Hiragino_Sans',sans-serif] text-[#3d2333]">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#ffe3f1] via-[#ffd9ec] to-[#ffcfe6]">
-        {/* logo top-right */}
+      <section
+        className="relative overflow-hidden bg-[#ffd9ec] bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroAsset.url})` }}
+      >
         <img
           src={logoAsset.url}
           alt="NailBiz"
           className="absolute right-4 top-4 z-20 w-20 sm:right-8 sm:top-6 sm:w-28"
         />
 
-        <div className="relative mx-auto max-w-5xl px-5 pt-14 sm:px-8 sm:pt-16">
+        <div className="relative mx-auto min-h-[560px] max-w-5xl px-5 pt-14 sm:px-8 sm:pt-16">
           <p className="text-center text-sm font-black tracking-wide sm:text-lg">
             頑張っているのに利益が残らないネイリスト必見！
           </p>
@@ -70,8 +62,8 @@ function Home() {
             <span className="text-sm font-black sm:text-base">からでも</span>
           </div>
 
-          <div className="mt-6 grid items-end gap-4 sm:grid-cols-[1.2fr_1fr]">
-            <div className="pb-6 text-center sm:text-left">
+          <div className="mt-6 pb-16 sm:max-w-[60%]">
+            <div className="text-center sm:text-left">
               <h1 className="text-4xl font-black leading-[1.3] tracking-tight text-[#e5398a] drop-shadow-[0_2px_0_rgba(255,255,255,0.9)] sm:text-6xl">
                 長く継続できる
                 <br />
@@ -91,14 +83,6 @@ function Home() {
                 <span className="text-xl font-black text-[#e5398a] sm:text-2xl">卒業</span>
               </div>
             </div>
-
-            <img
-              src={characterAsset.url}
-              alt="施術するネイリストの女の子"
-              width={1024}
-              height={1024}
-              className="mx-auto w-64 drop-shadow-xl sm:w-full sm:max-w-sm"
-            />
           </div>
         </div>
 
@@ -128,24 +112,22 @@ function Home() {
       <section id="episodes" className="mx-auto max-w-xl px-5 pb-16">
         <div className="flex flex-col gap-3">
           {episodes.map((ep) => (
-            <a
-              key={ep.no}
-              href={ep.ready ? "#episodes" : undefined}
-              aria-disabled={!ep.ready}
-              className={`flex items-center gap-3 rounded-full bg-gradient-to-r from-[#f0609f] to-[#e5398a] py-3 pl-2 pr-5 shadow-md shadow-[#e5398a]/30 transition-transform ${
-                ep.ready ? "hover:scale-[1.02]" : "opacity-80"
-              }`}
+            <Link
+              key={ep.id}
+              to="/episodes/$id"
+              params={{ id: ep.id }}
+              className="flex items-center gap-3 rounded-full bg-gradient-to-r from-[#f0609f] to-[#e5398a] py-3 pl-2 pr-5 shadow-md shadow-[#e5398a]/30 transition-transform hover:scale-[1.02]"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[11px] font-black leading-tight text-[#e5398a]">
-                {ep.no}
+                第{ep.num}話
               </span>
               <span className="flex-1 text-center text-sm font-black text-white sm:text-base">
-                {ep.title}
+                {ep.title.join("")}
               </span>
               <span aria-hidden className="text-white/90">
                 ›
               </span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
