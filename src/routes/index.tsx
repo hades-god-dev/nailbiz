@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import heroAsset from "@/assets/hero.png.asset.json";
 import mangaAsset from "@/assets/manga1.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
+import characterAsset from "@/assets/character.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NailBiz｜長く続けられるネイルサロン経営へ" },
+      { title: "NailBiz｜長く継続できるネイルサロン経営へ" },
       {
         name: "description",
         content:
           "頑張っているのに利益が残らないネイリスト必見。人脈なし・コネなし・資金なしから、安売りと長時間施術を卒業して利益を残す働き方へ。",
       },
-      { property: "og:title", content: "NailBiz｜長く続けられるネイルサロン経営へ" },
+      { property: "og:title", content: "NailBiz｜長く継続できるネイルサロン経営へ" },
       {
         property: "og:description",
         content:
@@ -27,157 +27,206 @@ export const Route = createFileRoute("/")({
 });
 
 const episodes = [
-  {
-    no: "第1話",
-    title: "なぜネイリストを選んだのか",
-    desc: "好きを仕事にしたあの日から。独立を決めるまでの原点のお話。",
-    image: mangaAsset.url,
-    ready: true,
-  },
-  {
-    no: "第2話",
-    title: "赤字、そこからの苦しみ",
-    desc: "売上わずか8万円。大赤字から抜け出すための試行錯誤がはじまる。",
-    image: mangaAsset.url,
-    ready: true,
-  },
-  {
-    no: "第3話",
-    title: "安売りをやめた日",
-    desc: "値下げと長時間施術の悪循環を断ち切るために決めたこと。",
-    ready: false,
-  },
-  {
-    no: "第4話",
-    title: "利益が残る仕組みへ",
-    desc: "時間にゆとりを持ちながら、利益もしっかり残す働き方の作り方。",
-    ready: false,
-  },
+  { no: "第1話", title: "なぜネイリストを選んだのか", ready: true },
+  { no: "第2話", title: "赤字そこからの苦しみ", ready: true },
+  { no: "第3話", title: "発想の転換（経費削減）", ready: false },
+  { no: "第4話", title: "時短×高単価の確立", ready: false },
+  { no: "第5話", title: "スタッフ雇用の壁", ready: false },
+  { no: "第6話", title: "満席ネイルサロンへ", ready: false },
+  { no: "第7話", title: "今も学び続ける", ready: false },
+  { no: "第8話", title: "経営スクールでの学び そしてこれから", ready: false },
 ];
+
+const pains = ["単価が上がらない", "時間がない", "頑張っているのに利益が残らない"];
+
+const results = ["無借金経営", "ネイル単価1万円", "経営8年", "ネイリスト歴14年"];
 
 function Home() {
   return (
-    <main className="min-h-screen bg-[#fff6fb] text-[#4a2b3c] font-[system-ui,'Hiragino_Sans','Noto_Sans_JP',sans-serif]">
+    <main className="min-h-screen bg-[#fff5fa] font-['Noto_Sans_JP',system-ui,'Hiragino_Sans',sans-serif] text-[#3d2333]">
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#ffe3f1] via-[#ffd9ec] to-[#ffcfe6]">
+        {/* logo top-right */}
         <img
-          src={heroAsset.url}
-          alt="ネイルサロンでお客様に施術するネイリスト"
-          className="absolute inset-0 h-full w-full object-cover object-right"
+          src={logoAsset.url}
+          alt="NailBiz"
+          className="absolute right-4 top-4 z-20 w-20 sm:right-8 sm:top-6 sm:w-28"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#ffd9ee]/95 via-[#ffd9ee]/70 to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-6 py-16 sm:px-10">
-          <img src={logoAsset.url} alt="NailBiz" className="mb-8 w-40 sm:w-52" />
-
-          <p className="inline-flex w-fit rounded-full bg-[#e5398a] px-5 py-2 text-sm font-bold text-white shadow-lg shadow-[#e5398a]/30 sm:text-base">
+        <div className="relative mx-auto max-w-5xl px-5 pt-14 sm:px-8 sm:pt-16">
+          <p className="text-center text-sm font-black tracking-wide sm:text-lg">
             頑張っているのに利益が残らないネイリスト必見！
           </p>
 
-          <p className="mt-6 text-base font-bold tracking-wide text-[#8a3d64] sm:text-xl">
-            人脈なし　コネなし　資金なし　からでも
-          </p>
-
-          <h1 className="mt-3 text-4xl font-black leading-[1.25] tracking-tight sm:text-6xl">
-            長く継続できる
-            <br />
-            <span className="bg-gradient-to-r from-[#e5398a] to-[#9b4df5] bg-clip-text text-transparent">
-              ネイルサロン経営
-            </span>
-            へ
-          </h1>
-
-          <div className="mt-8 flex flex-wrap gap-2">
-            {["安売り", "長時間施術", "薄利多売"].map((t) => (
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {["人脈なし", "コネなし", "資金なし"].map((t) => (
               <span
                 key={t}
-                className="rounded-full border-2 border-[#e5398a]/40 bg-white/80 px-4 py-1.5 text-sm font-bold text-[#e5398a] line-through decoration-[#e5398a]/60 sm:text-base"
+                className="rounded-md border-2 border-[#3d2333] bg-white px-3 py-1 text-sm font-black sm:px-4 sm:text-base"
               >
-                {t}
+                ✓{t}
               </span>
             ))}
-            <span className="self-center text-sm font-bold text-[#8a3d64] sm:text-base">
-              から卒業
-            </span>
+            <span className="text-sm font-black sm:text-base">からでも</span>
           </div>
 
-          <p className="mt-6 max-w-xl text-base font-semibold leading-relaxed text-[#5c2f47] sm:text-lg">
-            時間にゆとりを持ちながら
-            <br className="sm:hidden" />
-            利益もしっかり残せる働き方へ
-          </p>
+          <div className="mt-6 grid items-end gap-4 sm:grid-cols-[1.2fr_1fr]">
+            <div className="pb-6 text-center sm:text-left">
+              <h1 className="text-4xl font-black leading-[1.3] tracking-tight text-[#e5398a] drop-shadow-[0_2px_0_rgba(255,255,255,0.9)] sm:text-6xl">
+                長く継続できる
+                <br />
+                ネイルサロン経営へ
+              </h1>
 
-          <a
-            href="#episodes"
-            className="mt-10 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-[#e5398a] to-[#9b4df5] px-8 py-4 text-base font-bold text-white shadow-xl shadow-[#e5398a]/30 transition-transform hover:scale-105 sm:text-lg"
-          >
-            物語を読む
-            <span aria-hidden>→</span>
-          </a>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
+                {["安売り", "長時間施術", "薄利多売"].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full bg-[#4a4a4a] px-4 py-2 text-sm font-black text-white shadow-md sm:text-base"
+                  >
+                    {t}
+                  </span>
+                ))}
+                <span className="text-sm font-black sm:text-base">から</span>
+                <span className="text-xl font-black text-[#e5398a] sm:text-2xl">卒業</span>
+              </div>
+            </div>
+
+            <img
+              src={characterAsset.url}
+              alt="施術するネイリストの女の子"
+              width={1024}
+              height={1024}
+              className="mx-auto w-64 drop-shadow-xl sm:w-full sm:max-w-sm"
+            />
+          </div>
+        </div>
+
+        <div className="relative bg-[#e5398a] py-3 text-center">
+          <p className="text-sm font-black tracking-wide text-white sm:text-lg">
+            時間にゆとりを持ちながら利益もしっかり残せる働き方へ
+          </p>
         </div>
       </section>
 
-      {/* Episodes */}
-      <section id="episodes" className="mx-auto max-w-6xl px-6 py-20 sm:px-10">
-        <div className="text-center">
-          <p className="text-sm font-bold tracking-[0.3em] text-[#e5398a]">STORY</p>
-          <h2 className="mt-3 text-3xl font-black sm:text-4xl">
-            赤字サロンから抜け出すまでの全話
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-[#7b5467] sm:text-base">
-            実話をもとにしたマンガで、ネイルサロン経営の現実と変わり方をお届けします。
-          </p>
+      {/* Manga */}
+      <section className="mx-auto max-w-xl px-5 py-14">
+        <p className="text-center text-xs font-bold tracking-[0.3em] text-[#a67f93]">
+          今から10話ほどのお話…
+        </p>
+        <div className="mt-6 overflow-hidden rounded-xl border border-[#f2c6dd] shadow-lg">
+          <img
+            src={mangaAsset.url}
+            alt="第1話 なぜネイリストを選んだのか"
+            loading="lazy"
+            className="w-full"
+          />
         </div>
+      </section>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+      {/* Episode list */}
+      <section id="episodes" className="mx-auto max-w-xl px-5 pb-16">
+        <div className="flex flex-col gap-3">
           {episodes.map((ep) => (
-            <article
+            <a
               key={ep.no}
-              className="group overflow-hidden rounded-3xl border border-[#ffd2e8] bg-white shadow-[0_12px_40px_-20px_rgba(229,57,138,0.5)]"
+              href={ep.ready ? "#episodes" : undefined}
+              aria-disabled={!ep.ready}
+              className={`flex items-center gap-3 rounded-full bg-gradient-to-r from-[#f0609f] to-[#e5398a] py-3 pl-2 pr-5 shadow-md shadow-[#e5398a]/30 transition-transform ${
+                ep.ready ? "hover:scale-[1.02]" : "opacity-80"
+              }`}
             >
-              <div className="relative h-56 overflow-hidden bg-[#ffeaf5]">
-                {ep.ready ? (
-                  <img
-                    src={ep.image}
-                    alt={`${ep.no} ${ep.title}`}
-                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center text-sm font-bold text-[#e5398a]/60">
-                    COMING SOON
-                  </div>
-                )}
-                <span className="absolute left-4 top-4 rounded-full bg-[#e5398a] px-4 py-1 text-sm font-black text-white shadow-md">
-                  {ep.no}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-black sm:text-2xl">{ep.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#7b5467]">{ep.desc}</p>
-              </div>
-            </article>
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[11px] font-black leading-tight text-[#e5398a]">
+                {ep.no}
+              </span>
+              <span className="flex-1 text-center text-sm font-black text-white sm:text-base">
+                {ep.title}
+              </span>
+              <span aria-hidden className="text-white/90">
+                ›
+              </span>
+            </a>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-gradient-to-r from-[#e5398a] to-[#9b4df5] px-6 py-16 text-center text-white">
+      {/* Message */}
+      <section className="mx-auto max-w-xl px-5 pb-16 text-center">
         <h2 className="text-2xl font-black leading-relaxed sm:text-3xl">
-          その方法を、今からお話しします。
+          人脈なし、資金なし、コネなし。
         </h2>
-        <p className="mt-4 text-sm opacity-90 sm:text-base">
-          人脈なし。お金なし。コネなし。それでも、自力で黒字化した方法を公開中。
+        <p className="mt-6 text-sm font-bold leading-loose sm:text-base">
+          それでも、赤字から抜け出すことができました。
         </p>
-        <a
-          href="#episodes"
-          className="mt-8 inline-flex rounded-full bg-white px-10 py-4 text-base font-black text-[#e5398a] shadow-xl transition-transform hover:scale-105"
-        >
-          第1話を読む
-        </a>
+        <p className="mt-8 text-sm font-bold leading-loose sm:text-base">
+          もしあなたが今、
+        </p>
+        <div className="mt-4 flex flex-col items-center gap-3">
+          {pains.map((t) => (
+            <p key={t} className="text-base font-black sm:text-lg">
+              「
+              <span className="underline decoration-[#e5398a] decoration-4 underline-offset-4">
+                {t}
+              </span>
+              」
+            </p>
+          ))}
+        </div>
+        <p className="mt-8 text-sm font-bold leading-loose sm:text-base">
+          そう感じているなら、
+          <br />
+          それは私が経験してきたことと、
+          <br />
+          同じかもしれません。
+        </p>
+        <p className="mt-8 text-sm font-bold leading-loose sm:text-base">
+          資金がなくても、
+          <br />
+          失敗せず開業できる。
+        </p>
+
+        <div className="mx-auto mt-10 max-w-sm rounded-2xl border-2 border-[#f2c6dd] bg-white p-6 text-left shadow-lg">
+          <ul className="flex flex-col gap-3">
+            {results.map((t) => (
+              <li key={t} className="flex items-center gap-3 text-sm font-black sm:text-base">
+                <span className="h-3 w-3 shrink-0 rounded-full bg-[#ffd94d] shadow-inner" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p className="mt-10 text-xs font-bold leading-relaxed text-[#7b5467]">
+          今も毎年数百万円をかけて
+          <br />
+          経営コミュニティで学び続け、
+          <br />
+          経営・AI・を勉強。
+        </p>
       </section>
 
-      <footer className="bg-[#fff6fb] py-8 text-center text-xs text-[#a67f93]">
-        © NailBiz
+      {/* LINE CTA */}
+      <section className="mx-auto max-w-xl px-5 pb-20 text-center">
+        <p className="text-lg font-black leading-relaxed text-[#e5398a] sm:text-xl">
+          無料でネイル技術pdfを
+          <br />
+          LINEでシェアしています！
+        </p>
+        <p className="mt-6 inline-block rounded-full border border-[#3d2333] px-4 py-1 text-xs font-bold">
+          登録は30秒で完了！
+        </p>
+        <div className="mt-4">
+          <a
+            href="#"
+            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-[#06c755] px-8 py-4 text-lg font-black text-white shadow-xl shadow-[#06c755]/30 transition-transform hover:scale-[1.02]"
+          >
+            今すぐLINEで受け取る
+          </a>
+        </div>
+      </section>
+
+      <footer className="bg-[#e5398a] py-8 text-center text-xs font-bold text-white/90">
+        © NailBiz All Rights Reserved.
       </footer>
     </main>
   );
