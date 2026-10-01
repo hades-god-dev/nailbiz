@@ -27,17 +27,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const episodes = [
-  { no: "第1話", title: "なぜネイリストを選んだのか", ready: true },
-  { no: "第2話", title: "赤字そこからの苦しみ", ready: true },
-  { no: "第3話", title: "発想の転換（経費削減）", ready: false },
-  { no: "第4話", title: "時短×高単価の確立", ready: false },
-  { no: "第5話", title: "スタッフ雇用の壁", ready: false },
-  { no: "第6話", title: "満席ネイルサロンへ", ready: false },
-  { no: "第7話", title: "今も学び続ける", ready: false },
-  { no: "第8話", title: "経営スクールでの学び そしてこれから", ready: false },
-];
-
 const pains = ["単価が上がらない", "時間がない", "頑張っているのに利益が残らない"];
 
 const results = ["無借金経営", "ネイル単価1万円", "経営8年", "ネイリスト歴14年"];
