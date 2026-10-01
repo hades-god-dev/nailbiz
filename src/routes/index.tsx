@@ -69,26 +69,57 @@ function Home() {
                 <br />
                 ネイルサロン経営へ
               </h1>
-
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
-                {["安売り", "長時間施術", "薄利多売"].map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-[#4a4a4a] px-4 py-2 text-sm font-black text-white shadow-md sm:text-base"
-                  >
-                    {t}
-                  </span>
-                ))}
-                <span className="text-sm font-black sm:text-base">から</span>
-                <span className="text-xl font-black text-[#e5398a] sm:text-2xl">卒業</span>
-              </div>
             </div>
           </div>
         </div>
 
-        <div className="relative bg-[#e5398a] py-3 text-center">
+        {/* Cloud band */}
+        <div className="relative bg-[#1a1a1a] px-4 pb-10 pt-12">
+          <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-6 gap-y-8">
+            {["安売り", "長時間施術", "薄利多売"].map((t) => (
+              <div key={t} className="relative">
+                {/* cloud built from overlapping circles */}
+                <div className="relative flex h-24 w-48 items-center justify-center sm:h-28 sm:w-56">
+                  <span className="absolute left-2 top-6 h-16 w-16 rounded-full bg-[#5a5a5a] sm:h-20 sm:w-20" />
+                  <span className="absolute left-10 top-1 h-20 w-20 rounded-full bg-[#5a5a5a] sm:left-12 sm:h-24 sm:w-24" />
+                  <span className="absolute right-8 top-3 h-16 w-16 rounded-full bg-[#5a5a5a] sm:h-20 sm:w-20" />
+                  <span className="absolute bottom-1 left-6 h-14 w-14 rounded-full bg-[#5a5a5a] sm:h-16 sm:w-16" />
+                  <span className="absolute bottom-2 right-3 h-14 w-14 rounded-full bg-[#5a5a5a] sm:h-16 sm:w-16" />
+                  <span className="relative z-10 text-lg font-black text-white sm:text-2xl">
+                    {t}
+                  </span>
+                </div>
+                {/* swirl mark */}
+                <svg
+                  viewBox="0 0 40 32"
+                  className="absolute -right-4 -top-3 h-7 w-9 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                >
+                  <path d="M6 26 C 4 14, 14 6, 24 8 C 32 10, 32 20, 24 21 C 18 22, 16 16, 21 14" />
+                </svg>
+              </div>
+            ))}
+            <p className="flex items-center gap-2 text-white">
+              <span className="text-lg font-black sm:text-2xl">から</span>
+              <span className="text-3xl font-black text-[#e5398a] sm:text-5xl">卒業</span>
+              <span className="text-2xl text-[#ffd94d] sm:text-3xl">✦</span>
+            </p>
+          </div>
+          {/* chevron */}
+          <div className="mt-6 flex flex-col items-center leading-none">
+            <span className="text-3xl font-black text-[#e5398a]">⌄</span>
+            <span className="-mt-4 text-3xl font-black text-[#e5398a]">⌄</span>
+          </div>
+        </div>
+
+        <div className="relative bg-[#e5398a] py-4 text-center">
           <p className="text-sm font-black tracking-wide text-white sm:text-lg">
-            時間にゆとりを持ちながら利益もしっかり残せる働き方へ
+            時間にゆとりを持ちながら
+            <span className="text-[#ffd94d]">利益もしっかり残せる</span>
+            働き方へ
           </p>
         </div>
       </section>
